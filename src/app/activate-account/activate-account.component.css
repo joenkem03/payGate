@@ -1,0 +1,8 @@
+.list-group-item {
+	border-radius: 0px;
+	border-left: 0px;
+	border-right: 0px;
+}
+.list-group-item b {
+	color: blue;
+}

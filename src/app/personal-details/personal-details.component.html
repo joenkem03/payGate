@@ -1,0 +1,168 @@
+<!-- BEGIN: Main Menu-->
+<app-navigation-menu></app-navigation-menu>
+<!-- END: Main Menu-->
+
+<!-- BEGIN: Content-->
+<div class="app-content content">
+
+	<!-- BEGIN: Header-->
+	<app-navigation-header></app-navigation-header>
+	<!-- END: Header-->
+
+	<div class="content-wrapper">
+		<div class="content-header row">
+		</div>
+		<div class="content-body">
+			<!-- Dashboard Analytics Start -->
+			<section id="personal-details">
+				<!-- Account-begins -->
+				<div class="settings-account">
+					<!-- <h6 class="mb-1">Account</h6> -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" href="#/personal-details" aria-controls="home" role="tab" aria-selected="true">Profile</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#/business-details" aria-controls="profile" role="tab" aria-selected="false">Business</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#/bank-details" aria-controls="bank" role="tab" aria-selected="false">Bank</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#/api/keys/webhook" aria-controls="bank" role="tab" aria-selected="false">API/Webhooks</a>
+						</li>
+					</ul>
+					<div class="card user-form">
+						<div class="card-header">
+							<h4 class="card-title">Personal Details</h4>
+						</div>
+						<div class="card-body" style="margin-top: 10px;">
+							<div>
+								<div class="card-content">
+									<form [formGroup]="personalDetailsForm" (ngSubmit)="onSubmit()" class="form form-vertical margin-0">
+										<div class="row">
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="first-name-vertical">First Name</label>
+													<div class="position-relative has-icon-left">
+														<input type="text" class="form-control" formControlName="firstName" id="firstName" placeholder="First Name" required>
+														<div class="error" *ngIf="personalDetailsForm.controls['firstName'].hasError('required') && personalDetailsForm.controls['firstName'].touched">First name is required</div>
+														<div class="form-control-position">
+															<i class="feather icon-user"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="last-name-vertical">Last Name</label>
+													<div class="position-relative has-icon-left">
+														<input type="text" class="form-control" formControlName="lastName" id="lastName" placeholder="Last Name" required>
+														<div class="error" *ngIf="personalDetailsForm.controls['lastName'].hasError('required') && personalDetailsForm.controls['lastName'].touched">Last name is required</div>
+														<div class="form-control-position">
+															<i class="feather icon-user"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="url-vertical">Email Address</label>
+													<div class="position-relative has-icon-left">
+														<input type="text" class="form-control" formControlName="emailAddress" id="emailAddress" placeholder="Email" required data-validation-required-message="Must be a valid email">
+														<div class="error" *ngIf="personalDetailsForm.controls['emailAddress'].hasError('required') && personalDetailsForm.controls['emailAddress'].touched">Email address is required</div>
+														<div class="form-control-position">
+															<i class="feather icon-mail"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="url-vertical">Phone number</label>
+													<div class="position-relative has-icon-left">
+														<input type="tel" class="form-control" formControlName="phoneNumber" id="phoneNumber" placeholder="Phone number" required>
+														<div class="error" *ngIf="personalDetailsForm.controls['phoneNumber'].hasError('required') && personalDetailsForm.controls['phoneNumber'].touched">Phone number is required</div>
+														<div class="form-control-position">
+															<i class="feather icon-phone"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="company-vertical">Company</label>
+													<div class="position-relative has-icon-left">
+														<input type="text" class="form-control" formControlName="businessName" id="businessName" placeholder="Company Name">
+														<div class="error" *ngIf="personalDetailsForm.controls['businessName'].hasError('required') && personalDetailsForm.controls['businessName'].touched">Business name is required</div>
+														<div class="form-control-position">
+															<i class="feather icon-at-sign"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="location-vertical">Date of birth</label>
+													<div class="position-relative has-icon-left">
+														<input type="text" class="form-control pickadate" formControlName="dateOfBirth" id="dateOfBirth" placeholder="">
+														<div class="error" *ngIf="personalDetailsForm.controls['dateOfBirth'].hasError('required') && personalDetailsForm.controls['dateOfBirth'].touched">Date of birth is required</div>
+														<div class="form-control-position">
+															<i class="feather icon-calendar"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="card-body col-12" style="padding: 14px;">
+												<h4 class="card-title">Bank verification Number</h4>
+											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<div class="position-relative has-icon-left">
+														<input type="text" class="form-control" formControlName="bvn" id="bvn" placeholder="Bank Verification Number" maxlength="11" data-validation-containsnumber-regex="^([0-9]+)$" data-validation-containsnumber-message="BVN must only contain numbers 0-9!">
+														<div class="error" *ngIf="personalDetailsForm.controls['bvn'].hasError('required') && personalDetailsForm.controls['bvn'].touched">BVN is required</div>
+														<div class="form-control-position">
+															<i class="feather icon-users"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-12 col-12 border-top margin-0 padding-bottom-7">
+												<button type="submit" class="btn btn-primary mb-50" id="buttonPersonalBankDetails" value="Save Details" [disabled]="personalDetailsForm.invalid">
+													{{ loading ? 'Loading, please wait...' : 'Save Details' }}
+												</button>
+												<div *ngIf="invalidEntry" class="error signup-error">
+													<div>{{errorMessage}}</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="d-flex border-top pt-2 pl-2 pr-2">
+							<p>Available for hire</p>
+							<div class="custom-control custom-switch custom-switch-primary ml-auto">
+								<input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+								<label class="custom-control-label" for="customSwitch1"></label>
+							</div>
+						</div> -->
+					</div>
+				</div>
+				<!-- Account-end -->
+			</section>
+			<!-- Dashboard Analytics end -->
+
+		</div>
+	</div>
+</div>
+<!-- END: Content-->
+
+<div class="sidenav-overlay"></div>
+<div class="drag-target"></div>
+
+<!-- BEGIN: Footer-->
+<app-navigation-footer></app-navigation-footer>
+<!-- END: Footer-->

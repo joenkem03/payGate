@@ -1,0 +1,142 @@
+<!-- BEGIN: Main Menu-->
+<app-navigation-menu></app-navigation-menu>
+<!-- END: Main Menu-->
+
+<!-- BEGIN: Content-->
+<div class="app-content content">
+
+	<!-- BEGIN: Header-->
+	<app-navigation-header></app-navigation-header>
+	<!-- END: Header-->
+
+	<div class="content-wrapper">
+		<div class="content-header row">
+		</div>
+		<div class="content-body">
+			<!-- Dashboard Analytics Start -->
+			<section id="personal-details">
+				<!-- Account-begins -->
+				<div class="settings-account">
+					<!-- <h6 class="mb-1">Account</h6> -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link" href="#/personal-details" aria-controls="home" role="tab" aria-selected="true">Profile</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#/business-details" aria-controls="profile" role="tab" aria-selected="false">Business</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#/bank-details" aria-controls="bank" role="tab" aria-selected="false">Bank</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="#/api/keys/webhook" aria-controls="bank" role="tab" aria-selected="false">API/Webhooks</a>
+						</li>
+					</ul>
+
+
+					<!-- Show API Keys -->
+					<div class="card user-form">
+						<div class="card-header">
+							<h4 class="card-title">{{apiCategory}} Keys</h4>
+						</div>
+						<div class="card-body" style="margin-top: 10px;">
+							<div>
+								<div class="card-content">
+									<form [formGroup]="apikeysDetailsForm" class="form form-vertical margin-0">
+										<div class="row">
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="api-key-vertical">API Key</label>
+													<div class="position-relative">
+														<input type="text" class="form-control form-control-lg" formControlName="apiKey" id="apiKey" #apikeyinput required readonly>
+														<a (click)="onCopyApiKey(apikeyinput)">Copy</a>
+														<div class="error">{{apiKeyMessage}}</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="auth-key-vertical">Authentication Key</label>
+													<div class="position-relative">
+														<input type="text" class="form-control form-control-lg" formControlName="authKey" id="authKey" #authkeyinput required readonly>
+														<a (click)="onCopyAuthKey(authkeyinput)">Copy</a>
+														<div class="error">{{authKeyMessage}}</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End API Keys -->
+
+					<!-- Setup webhooks -->
+					<div class="card user-form">
+						<div class="card-header">
+							<h4 class="card-title">Webhook Details</h4>
+						</div>
+						<div class="card-body" style="margin-top: 10px;">
+							<div>
+								<div class="card-content">
+									<form [formGroup]="webhookDetailsForm" (ngSubmit)="onSubmitWebhook()" class="form form-vertical margin-0">
+										<div class="row">
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="success-url-vertical">Success URL</label>
+													<div class="position-relative has-icon-left">
+														<input type="url" class="form-control" formControlName="successURL" id="successURL" placeholder="http://" required>
+														<div class="error" *ngIf="webhookDetailsForm.controls['successURL'].hasError('required') && webhookDetailsForm.controls['successURL'].touched">Success URL is required</div>
+														<div class="form-control-position">
+															<i class="feather icon-globe"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="fail-url-vertical">Failure URL</label>
+													<div class="position-relative has-icon-left">
+														<input type="url" class="form-control" formControlName="failureURL" id="failureURL" placeholder="http://">
+														<div class="error" *ngIf="webhookDetailsForm.controls['failureURL'].hasError('required') && webhookDetailsForm.controls['failureURL'].touched">Failure URL is required</div>
+														<div class="form-control-position">
+															<i class="feather icon-globe"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-12 col-12 border-top margin-0 padding-bottom-7">
+												<button type="submit" class="btn btn-primary mb-50" id="buttonUpdateWebhookDetails" value="Save Record" [disabled]="webhookDetailsForm.invalid">
+													{{ loading ? 'Loading, please wait...' : 'Save Record' }}
+												</button>
+												<!-- <div *ngIf="invalidEntry" class="error signup-error">
+													<div>{{errorMessage}}</div>
+												</div> -->
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Webhooks -->
+
+
+				</div>
+				<!-- Account-end -->
+			</section>
+			<!-- Dashboard Analytics end -->
+
+		</div>
+	</div>
+</div>
+<!-- END: Content-->
+
+<div class="sidenav-overlay"></div>
+<div class="drag-target"></div>
+
+<!-- BEGIN: Footer-->
+<app-navigation-footer></app-navigation-footer>
+<!-- END: Footer-->

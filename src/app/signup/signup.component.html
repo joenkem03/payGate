@@ -1,0 +1,106 @@
+<!-- BEGIN: Content-->
+<div class="app-content content">
+	<div class="content-wrapper">
+		<div class="content-header row"></div>
+		<div class="content-body">
+			<section class="row flexbox-container">
+				<!-- <div class="col-xl-12 col-10 d-flex justify-content-center">
+					<img src="../../assets/images/logo/logo-primary.png" alt="branding logo">
+				</div> -->
+				<div class="col-xl-12 col-10 d-flex justify-content-center">
+					<div class="card bg-authentication rounded-0 mb-0">
+						<div class="row m-0">
+							<div class="col-lg-6 d-lg-block d-none text-center align-self-center pl-0 pr-3 py-0">
+								<img src="../../assets/images/pages/register.jpg" alt="branding logo">
+							</div>
+							<div class="col-lg-6 col-12 p-0">
+								<div class="card rounded-0 mb-0 p-2">
+									<div class="card-header pt-50 pb-1">
+										<div class="card-title">
+											<h4 class="mb-0">Create Account</h4>
+										</div>
+									</div>
+									<p class="px-2">Fill the below form to create a new account.</p><br />
+									<div class="card-content">
+										<div class="card-body pt-0">
+											<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+													<div class="form-label-group">
+														<input type="text" formControlName="applicationName" id="applicationName" class="form-control" placeholder="Business/Application name" required>
+														<label for="applicationName">Business or Application Name</label>
+														<div class="error" *ngIf="signupForm.controls['applicationName'].hasError('required') && signupForm.controls['applicationName'].touched">Business or Application name is required</div>
+													</div>
+												<!-- <div class="form-label-group">
+													<input type="text" formControlName="firstName" id="firstName" class="form-control" placeholder="Your firstname" required>
+													<label for="firstName">Firstname</label>
+													<div class="error" *ngIf="signupForm.controls['firstName'].hasError('required') && signupForm.controls['firstName'].touched">Firstname is required</div>
+												</div>
+												<div class="form-label-group">
+													<input type="text" formControlName="lastName" id="lastName" class="form-control" placeholder="Your lastname" required>
+													<label for="lastName">Last name</label>
+													<div class="error" *ngIf="signupForm.controls['lastName'].hasError('required') && signupForm.controls['lastName'].touched">Lastname is required</div>
+												</div>
+												<div class="form-label-group">
+													<input type="text" formControlName="phoneNumber" id="phoneNumber" class="form-control" placeholder="08012345678" required>
+													<label for="phoneNumber">Phone number</label>
+													<div class="error" *ngIf="signupForm.controls['phoneNumber'].hasError('required') && signupForm.controls['phoneNumber'].touched">Phone number is required</div>
+												</div> -->
+												<div class="form-label-group">
+													<input type="email" formControlName="emailAddress" id="emailAddress" class="form-control" placeholder="username@demo.com" required>
+													<label for="emailAddress">Email</label>
+													<div class="error" *ngIf="signupForm.controls['emailAddress'].hasError('required') && signupForm.controls['emailAddress'].touched">Email address is required</div>
+													<div class="error error-text" *ngIf="signupForm.controls['emailAddress'].hasError('email')">Email must be a valid email address</div>
+												</div>
+												<div class="form-label-group">
+													<input type="password" formControlName="password" id="password" class="form-control" placeholder="Password" required>
+													<label for="password">Password</label>
+													<div class="error" *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].touched || signupForm.controls['password'].dirty)">
+														<div class="error error-text" *ngIf="signupForm.controls['password'].hasError('required') && signupForm.controls['password'].touched">Password is required</div>
+														<div class="error error-text" *ngIf="signupForm.controls['password'].hasError('passwordStrength')">{{signupForm.controls['password'].errors['passwordStrength']}}</div>
+													</div>
+												</div>
+												<div class="form-label-group">
+													<input type="password" formControlName="confirmPassword" id="confirmPassword" class="form-control" placeholder="Confirm Password" required>
+													<label for="confirmPassword">Confirm Password</label>
+													<div class="error" *ngIf="signupForm.controls['password'].value != signupForm.controls['confirmPassword'].value">Password mismatch!. Check and retry</div>
+												</div>
+												<div class="form-group row">
+													<div class="col-12">
+														<fieldset class="checkbox">
+															<div class="vs-checkbox-con vs-checkbox-primary">
+																<input type="checkbox" checked required formControlName="termsAndConditions" id="termsAndConditions">
+																<span class="vs-checkbox">
+																	<span class="vs-checkbox--check">
+																		<i class="vs-icon feather icon-check"></i>
+																	</span>
+																</span>
+																<span class=""> I accept the terms & conditions.</span>
+															</div>
+														</fieldset>
+													</div>
+												</div>
+												<button type="submit" class="btn btn-primary btn-block mb-50" id="buttonSignup" value="Submit" [disabled]="signupForm.invalid">
+													{{ loading ? 'Loading, please wait...' : 'Register' }}
+												</button>
+												<div *ngIf="invalidSignup" class="error signup-error">
+													<div>{{errorMessage}}</div>
+												</div>
+											</form>
+										</div>
+									</div>
+									<div class="login-footer">
+										<div class="divider">
+											<div class="divider-text">OR</div>
+										</div>
+										<a href="#/login" class="btn btn-outline-primary btn-block reg">Login</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+	</div>
+</div>
+<!-- END: Content-->

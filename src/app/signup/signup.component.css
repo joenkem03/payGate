@@ -1,0 +1,69 @@
+.signup-error {
+	background-color: red;
+	color: #fff;
+	padding: 10px;
+	margin-top: 7px;
+	margin-left: 5px;
+	margin-right: -5px;
+	text-align: center;
+}
+
+.signupfooter {
+	padding-bottom: 7px;
+	margin-bottom: 7px;
+}
+
+.error-text {
+	color: red;
+	font-weight: bold;
+}
+
+.card-body {
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+.card-content {
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+.margin-0 {
+	margin: 0;
+}
+
+.padding-0 {
+	padding: 0;
+}
+
+.padding-top {
+	padding: 7px;
+}
+
+.padding-bottom-7 {
+	padding: 7px;
+}
+
+input {
+	padding: 25px;
+}
+
+button {
+	font-weight: bold;
+	margin-left: 3px;
+	padding: 18px;
+}
+
+.form-control-position {
+	padding-top: 8px;
+}
+
+.select {
+	padding-top: 0px;
+}
+
+.reg {
+	font-weight: bold;
+	margin-left: 3px;
+	padding: 18px;
+}

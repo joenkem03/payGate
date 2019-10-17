@@ -1,0 +1,187 @@
+<!-- BEGIN: Main Menu-->
+<app-navigation-menu></app-navigation-menu>
+<!-- END: Main Menu-->
+
+<!-- BEGIN: Content-->
+<div class="app-content content">
+
+	<!-- BEGIN: Header-->
+	<app-navigation-header></app-navigation-header>
+	<!-- END: Header-->
+
+	<div class="content-wrapper">
+		<div class="content-header row">
+		</div>
+		<div class="content-body">
+			<!-- Dashboard Analytics Start -->
+			<section id="personal-details">
+				<!-- Account-begins -->
+				<div class="settings-account">
+					<!-- <h6 class="mb-1">Account</h6> -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link" href="#/personal-details" aria-controls="home" role="tab" aria-selected="true">Profile</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="#/business-details" aria-controls="profile" role="tab" aria-selected="false">Business</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#/bank-details" aria-controls="bank" role="tab" aria-selected="false">Bank</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#/api/keys/webhook" aria-controls="bank" role="tab" aria-selected="false">API/Webhooks</a>
+						</li>
+					</ul>
+					<div class="card user-form">
+						<div class="card-header">
+							<h4 class="card-title">Business Details</h4>
+						</div>
+						<div class="card-body" style="margin-top: 10px;">
+							<div>
+								<div class="card-content">
+									<form [formGroup]="businessDetailsForm" (ngSubmit)="onSubmit()" class="form form-vertical margin-0">
+										<div class="row">
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="business-name-vertical">Business Name</label>
+													<div class="position-relative has-icon-left">
+														<input type="text" class="form-control" formControlName="businessName" id="businessName" placeholder="Business Name" readonly required>
+														<div class="error" *ngIf="businessDetailsForm.controls['businessName'].hasError('required') && businessDetailsForm.controls['businessName'].touched">Business name is required</div>
+														<div class="form-control-position">
+															<i class="feather icon-user"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="email-vertical">Business Email</label>
+													<div class="position-relative has-icon-left">
+														<input type="email" class="form-control" formControlName="emailAddress" id="emailAddress" placeholder="business@domain.com" required>
+														<div class="error" *ngIf="businessDetailsForm.controls['emailAddress'].hasError('required') && businessDetailsForm.controls['emailAddress'].touched">Businesss email is required</div>
+														<div class="form-control-position">
+															<i class="feather icon-mail"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="phone-number-vertical">Phone number</label>
+													<div class="position-relative has-icon-left">
+														<input type="tel" class="form-control" formControlName="phoneNumber" id="phoneNumber" placeholder="Phone number" required>
+														<div class="error" *ngIf="businessDetailsForm.controls['phoneNumber'].hasError('required') && businessDetailsForm.controls['phoneNumber'].touched">Phone number is required</div>
+														<div class="form-control-position">
+															<i class="feather icon-phone"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="url-vertical">Website URL</label>
+													<div class="position-relative has-icon-left">
+														<input type="url" class="form-control" formControlName="websiteUrl" id="websiteUrl" placeholder="http://domain.com" data-validation-regex-regex="^(http(s)?:\/\/)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$" data-validation-regex-message="Must be a valid url">
+														<!-- <div class="error" *ngIf="businessDetailsForm.controls['websiteUrl'].hasError('required') && businessDetailsForm.controls['websiteUrl'].touched"> is required</div> -->
+														<div class="form-control-position">
+															<i class="feather icon-globe"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="address-vertical">Registered Address</label>
+													<div class="position-relative has-icon-left">
+														<textarea class="form-control" rows="3" formControlName="businessAddress" id="businessAddress" placeholder="Company Address"></textarea>
+														<div class="error" *ngIf="businessDetailsForm.controls['businessAddress'].hasError('required') && businessDetailsForm.controls['businessAddress'].touched">Business address is required</div>
+														<div class="form-control-position">
+															<i class="feather icon-home"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="description-vertical">Description</label>
+													<div class="position-relative has-icon-left">
+														<textarea data-length=200 class="form-control char-textarea" rows="3" formControlName="businessDescription" id="businessDescription" placeholder="Company description" maxlength="200" required></textarea>
+														<div class="error" *ngIf="businessDetailsForm.controls['businessDescription'].hasError('required') && businessDetailsForm.controls['businessDescription'].touched">Business description is required</div>
+														<small class="counter-value float-right"><span class="char-count">0</span> / 200 </small>
+														<div class="form-control-position">
+															<i class="feather icon-edit"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+
+											<div class="card-body col-12" style="padding: 14px;">
+												<h4 class="card-title">Business Information</h4>
+											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="reg-type-vertical">Registration Type</label>
+													<div class="position-relative has-icon-left">
+														<select class="form-control form-control-lg" formControlName="businessType" id="businessType" required>
+															<option value=""></option>
+															<option value="1">Starter</option>
+															<option value="2">Enterprise</option>
+														</select>
+														<div class="error" *ngIf="businessDetailsForm.controls['businessType'].hasError('required') && businessDetailsForm.controls['businessType'].touched">Business type is required</div>
+														<div class="form-control-position select">
+															<i class="feather icon-align-right"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="reg-number-vertical">Registration/Business Number</label>
+													<div class="position-relative has-icon-left">
+														<input type="text" class="form-control" formControlName="businessNumber" id="businessNumber" placeholder="A012345">
+														<div class="error" *ngIf="businessDetailsForm.controls['businessNumber'].hasError('required') && businessDetailsForm.controls['businessNumber'].touched">Registraion/Business number is required</div>
+														<div class="form-control-position">
+															<i class="feather icon-calendar"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-12 col-12 border-top margin-0 padding-bottom-7 ">
+												<button type="submit" class="btn btn-primary mb-50" id="buttonUpdateBusinessDetails" value="Save Record" [disabled]="businessDetailsForm.invalid">
+													{{ loading ? 'Loading, please wait...' : 'Save Record' }}
+												</button>
+												<!-- <div *ngIf="invalidEntry" class="error signup-error">
+													<div>{{errorMessage}}</div>
+												</div> -->
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="d-flex border-top pt-2 pl-2 pr-2">
+							<p>Available for hire</p>
+							<div class="custom-control custom-switch custom-switch-primary ml-auto">
+								<input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+								<label class="custom-control-label" for="customSwitch1"></label>
+							</div>
+						</div> -->
+					</div>
+				</div>
+				<!-- Account-end -->
+			</section>
+			<!-- Dashboard Analytics end -->
+
+		</div>
+	</div>
+</div>
+<!-- END: Content-->
+
+<div class="sidenav-overlay"></div>
+<div class="drag-target"></div>
+
+<!-- BEGIN: Footer-->
+<app-navigation-footer></app-navigation-footer>
+<!-- END: Footer-->

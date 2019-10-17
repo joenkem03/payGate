@@ -1,0 +1,31 @@
+.margin-0 {
+	margin: 0;
+}
+
+.padding-0 {
+	padding: 0;
+}
+
+.padding-top {
+	padding: 7px;
+}
+
+.padding-bottom-7 {
+	padding: 7px;
+}
+
+input,select {
+	padding: 24px;
+}
+button {
+	font-weight: bold;
+	margin-left: 5px;
+	padding: 16px;
+}
+input[readonly] {
+    background-color:#ffffff;
+}
+
+.form-control-position {
+	padding-top: 8px;
+}
