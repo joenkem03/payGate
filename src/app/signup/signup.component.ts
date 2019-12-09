@@ -46,10 +46,10 @@ export class SignupComponent implements OnInit, OnDestroy {
 		}
 
 		const signupPayload = {
-			// "FirstName": this.signupForm.controls.firstName.value,
-			// "LastName": this.signupForm.controls.lastName.value,
+			"FirstName": this.signupForm.controls.firstName.value,
+			"LastName": this.signupForm.controls.lastName.value,
 			"BusinessName": this.signupForm.controls.applicationName.value,
-			// "PhoneNumber": this.signupForm.controls.phoneNumber.value,
+			"PhoneNumber": this.signupForm.controls.phoneNumber.value,
 			"Email": this.signupForm.controls.emailAddress.value,
 			"Password": this.signupForm.controls.password.value,
 			"ConfirmPassword": this.signupForm.controls.confirmPassword.value
@@ -100,9 +100,9 @@ export class SignupComponent implements OnInit, OnDestroy {
 		body.classList.add('blank-page');
 		
 		this.signupForm = this.formBuilder.group({
-			// firstName: ['', Validators.required],
-			// lastName: ['', Validators.required],
-			// phoneNumber: ['', Validators.required],
+			firstName: ['', Validators.required],
+			lastName: ['', Validators.required],
+			phoneNumber: ['', Validators.required],
 			applicationName: ['', Validators.required],
 			emailAddress: ['', [Validators.required, Validators.email]],
 			password: ['', [Validators.required, PasswordStrengthValidator]],

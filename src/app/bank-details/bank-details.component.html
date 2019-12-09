@@ -88,6 +88,18 @@
 													</div>
 												</div>
 											</div>
+											<div class="col-md-6 col-12">
+												<div class="form-group">
+													<label for="bvn-vertical">Bank Verification Number</label>
+													<div class="position-relative has-icon-left">
+														<input type="text" class="form-control" formControlName="merchantBVN" id="merchantBVN" placeholder="0123456789">
+														<div class="error" *ngIf="bankDetailsForm.controls['merchantBVN'].hasError('required') && bankDetailsForm.controls['merchantBVN'].touched">BVN is required</div>
+														<div class="form-control-position">
+															<i class="feather icon-calendar"></i>
+														</div>
+													</div>
+												</div>
+											</div>
 
 											<div class="col-md-12 col-12 border-top margin-0 padding-bottom-7">
 												<button type="submit" class="btn btn-primary mb-50" id="buttonUpdateBankDetails" value="Save Record" [disabled]="bankDetailsForm.invalid">

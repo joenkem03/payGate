@@ -27,17 +27,19 @@ export class BankDetailsComponent implements OnInit {
 		}
 
 		const bankDetailsPayload = {
-			"BankAccountNumber": this.bankDetailsForm.controls.accountNumber.value,
-			"AccountName":"Dimgba Dimgba Kalu", // this.bankDetailsForm.controls.accountName.value 
-			"BankName": this.bankDetailsForm.controls.bankName.value,
-			"SortCode": "034"
+			"Accountnumber": this.bankDetailsForm.controls.accountNumber.value,
+			"Accountname": "Dimgba Dimgba Kalu", // this.bankDetailsForm.controls.accountName.value 
+			"Bankname": this.bankDetailsForm.controls.bankName.value,
+			"BVN": this.bankDetailsForm.controls.merchantBVN.value
+			// "SortCode": "034"
 		}
 		
+		console.log(bankDetailsPayload);
 		let Form = JSON.stringify(bankDetailsPayload);
-		this.apiService.updateBankDetails(Form).subscribe(data => {
+		this.apiService.addBankDetails(Form).subscribe(data => {
 			// debugger;
 			if (data.status == "true") {
-				this.logic.getMerchantUserDetails();
+				// this.logic.getMerchantUserDetails();
 				this.logic.getSuccessNotification(data.message);
 			} else {
 				this.invalidEntry = true;
@@ -48,16 +50,22 @@ export class BankDetailsComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		if (this.logic.getBankAccountNumber() === null) {
-			this.bankDetailsForm = this.formBuilder.group({
-				bankName: ['', Validators.required],
-				accountNumber: ['', Validators.required]
-			});
-		} else {
-			this.bankDetailsForm = this.formBuilder.group({
-				bankName: [this.logic.getBankName(), Validators.required],
-				accountNumber: [this.logic.getBankAccountNumber(), Validators.required]
-			});
-		}
+		// if (this.logic.getBankAccountNumber() === null) {
+		// 	this.bankDetailsForm = this.formBuilder.group({
+		// 		Bankname: ['', Validators.required],
+		// 		Accountnumber: ['', Validators.required],
+		// 		BVN: ['', Validators.required]
+		// 	});
+		// } else {
+		// 	this.bankDetailsForm = this.formBuilder.group({
+		// 		bankName: [this.logic.getBankName(), Validators.required],
+		// 		accountNumber: [this.logic.getBankAccountNumber(), Validators.required]
+		// 	});
+		// }
+		this.bankDetailsForm = this.formBuilder.group({
+			bankName: ['', Validators.required],
+			accountNumber: ['', Validators.required],
+			merchantBVN: ['', Validators.required]
+		});
 	}
 }

@@ -36,13 +36,15 @@ export class LoginComponent implements OnInit, OnDestroy {
 			
 			this.loading = false;
 			if (data.access_token) {
+				// get merchant registration status
+				// this.logic.getMerchantUserRegistrationStatus();
 				// get merchant details here
-				this.logic.getMerchantUserDetails();
-				if (this.logic.getIsLive() == true) {
-					this.router.navigate(['dashboard']);
-				} else {
-					this.router.navigate(['getting-started']);
-				}
+				// this.logic.getMerchantUserDetails();
+				// if (this.logic.getIsLive() == true) {
+				this.router.navigate(['dashboard']);
+				// } else {
+				// 	this.router.navigate(['getting-started']);
+				// }
 			} else {
 				this.invalidLogin = true;
 				this.errorMessage = "Invalid username/password. Retry";
