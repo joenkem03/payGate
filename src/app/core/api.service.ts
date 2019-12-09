@@ -12,10 +12,9 @@ import { map } from 'rxjs/operators';
 
 export class ApiService {
 	private options = {headers: new HttpHeaders().set('Content-Type', 'application/json')};
-	private baseUrl: string = 'http://gust.ercas.ng:8099/api/v1/';
+	private baseUrl: string = 'http://gust.ercas.ng:8099/api/';
 	// private merchantDetails = JSON.parse(window.localStorage.getItem("merchantDetails"));
 	updateBusinessDetailsURL: string;
-	createBusinessDetailsURL: string;
 	updateBankDetailsURL: string;
 	updateWebhookDetailsURL: string;
 
@@ -23,7 +22,7 @@ export class ApiService {
 	
 	// registration call request: signup for new merchants
 	signup(signupPayload: string): Observable<ApiResponse> {
-		return this.http.post<ApiResponse>(this.baseUrl + 'account/register', signupPayload, this.options);
+		return this.http.post<ApiResponse>('http://gust.ercas.ng:8099/api/account/register', signupPayload, this.options);
 	}
 
 	// call request to login user
@@ -72,84 +71,6 @@ export class ApiService {
 		));
 	}
 
-
-	/**
-	 * 
-	 * @param merchantDetailsPayload
-	 * Function get user registration status
-	 * BankDetails, Merchant Details etc
-	 */
-	getMerchantUserRegistrationStatus(merchantDetailsPayload: string): Observable<ApiResponse> {
-		const httpOptions = {
-			headers: new HttpHeaders({
-				'Content-Type': 'application/json',
-				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
-			})
-		};
-		return this.http.post(this.baseUrl + 'checkdetails', merchantDetailsPayload, httpOptions).pipe(map(
-			(res: any) => {
-				console.log(res);
-				return res;
-			},
-			err => console.log(err)
-		));
-	}
-
-
-	/**
-	 * 
-	 * @param businessDetailsPayload 
-	 * Call to create a new merchant detail
-	 */
-	addBusinessDetails(businessDetailsPayload: string): Observable<ApiResponse> {
-		this.createBusinessDetailsURL = this.baseUrl + "account/merchantdetail";
-		const httpOptions = {
-			headers: new HttpHeaders({
-				'Content-Type': 'application/json',
-				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
-			})
-		};
-		return this.http.post(this.createBusinessDetailsURL, businessDetailsPayload, httpOptions).pipe(map(
-			(res: any) => {
-				res = {
-                    message: "Updated successfully",
-                    status: "true"
-				};
-				return res;
-			},
-			err => console.log(err)
-		));
-	}
-
-	/**
-	 * 
-	 * @param bankDetailsPayload 
-	 * Call to create a new bank detail for merchant
-	 */
-	addBankDetails(bankDetailsPayload: string): Observable<ApiResponse> {
-		// const merchantDetails = JSON.parse(window.localStorage.getItem("merchantDetails"));
-		this.updateBankDetailsURL = this.baseUrl + "account/bankdetail";
-		const httpOptions = {
-			headers: new HttpHeaders({
-				'Content-Type': 'application/json',
-				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
-			})
-		};
-		return this.http.post(this.updateBankDetailsURL, bankDetailsPayload, httpOptions).pipe(map(
-			(res: any) => {
-				res = {
-                    message: "Updated successfully",
-                    status: "true"
-				};
-				return res;
-			},
-			(err: any) => console.log(err)
-		));
-	}
-
-
-
-
 	updatePersonalDetails(personalDetailsPayload: string): Observable<ApiResponse> {
 		// const merchantDetails = JSON.parse(window.localStorage.getItem("merchantDetails"));
 		const httpOptions = {
@@ -190,7 +111,26 @@ export class ApiService {
 		));
 	}
 
-	
+	updateBankDetails(bankDetailsPayload: string): Observable<ApiResponse> {
+		// const merchantDetails = JSON.parse(window.localStorage.getItem("merchantDetails"));
+		this.updateBankDetailsURL = "http://gust.ercas.ng:8099/api/Update/ACI";
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
+			})
+		};
+		return this.http.post(this.updateBankDetailsURL, bankDetailsPayload, httpOptions).pipe(map(
+			(res: any) => {
+				res = {
+                    message: "Updated successfully",
+                    status: "true"
+				};
+				return res;
+			},
+			(err: any) => console.log(err)
+		));
+	}
 
 	updateWebhookDetails(webhookDetailsPayload: string): Observable<ApiResponse> {
 		const merchantDetails = JSON.parse(window.localStorage.getItem("merchantDetails"));

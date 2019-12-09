@@ -77,18 +77,6 @@ export class LogicReuseable {
 		});
 	}
 
-	getMerchantUserRegistrationStatus() {
-		// load the merchant data here
-		const merchantDetailsPayload = {}
-		let Form = JSON.stringify(merchantDetailsPayload);
-		this.apiService.getMerchantUserRegistrationStatus(Form).subscribe(merchant_data => {
-			// debugger;
-			const res: any = JSON.stringify(merchant_data);
-			console.log(res);
-			// window.localStorage.setItem("merchantDetails", res);
-		});
-	}
-
 	getFirstName() {
 		if (this.merchantDetails !== null) {
 			if (this.merchantDetails[0].FirstName == null) {

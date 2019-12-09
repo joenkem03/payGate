@@ -45,7 +45,7 @@
 												<div class="form-group">
 													<label for="business-name-vertical">Business Name</label>
 													<div class="position-relative has-icon-left">
-														<input type="text" class="form-control" formControlName="businessName" id="businessName" placeholder="Business Name" required>
+														<input type="text" class="form-control" formControlName="businessName" id="businessName" placeholder="Business Name" readonly required>
 														<div class="error" *ngIf="businessDetailsForm.controls['businessName'].hasError('required') && businessDetailsForm.controls['businessName'].touched">Business name is required</div>
 														<div class="form-control-position">
 															<i class="feather icon-user"></i>
@@ -53,7 +53,7 @@
 													</div>
 												</div>
 											</div>
-											<!-- <div class="col-md-6 col-12">
+											<div class="col-md-6 col-12">
 												<div class="form-group">
 													<label for="email-vertical">Business Email</label>
 													<div class="position-relative has-icon-left">
@@ -82,22 +82,9 @@
 													<label for="url-vertical">Website URL</label>
 													<div class="position-relative has-icon-left">
 														<input type="url" class="form-control" formControlName="websiteUrl" id="websiteUrl" placeholder="http://domain.com" data-validation-regex-regex="^(http(s)?:\/\/)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$" data-validation-regex-message="Must be a valid url">
-														-- comment <div class="error" *ngIf="businessDetailsForm.controls['websiteUrl'].hasError('required') && businessDetailsForm.controls['websiteUrl'].touched"> is required</div> --comment
+														<!-- <div class="error" *ngIf="businessDetailsForm.controls['websiteUrl'].hasError('required') && businessDetailsForm.controls['websiteUrl'].touched"> is required</div> -->
 														<div class="form-control-position">
 															<i class="feather icon-globe"></i>
-														</div>
-													</div>
-												</div>
-											</div> -->
-											
-											<div class="col-md-6 col-12">
-												<div class="form-group">
-													<label for="city-vertical">City/Town</label>
-													<div class="position-relative has-icon-left">
-														<input type="text" class="form-control" formControlName="businessCity" id="businessCity" placeholder="Abuja">
-														<div class="error" *ngIf="businessDetailsForm.controls['businessCity'].hasError('required') && businessDetailsForm.controls['businessCity'].touched">City/Town is required</div>
-														<div class="form-control-position">
-															<i class="feather icon-world"></i>
 														</div>
 													</div>
 												</div>
@@ -148,7 +135,7 @@
 													</div>
 												</div>
 											</div>
-											<!-- <div class="col-md-6 col-12">
+											<div class="col-md-6 col-12">
 												<div class="form-group">
 													<label for="reg-number-vertical">Registration/Business Number</label>
 													<div class="position-relative has-icon-left">
@@ -159,7 +146,7 @@
 														</div>
 													</div>
 												</div>
-											</div> -->
+											</div>
 
 											<div class="col-md-12 col-12 border-top margin-0 padding-bottom-7 ">
 												<button type="submit" class="btn btn-primary mb-50" id="buttonUpdateBusinessDetails" value="Save Record" [disabled]="businessDetailsForm.invalid">
