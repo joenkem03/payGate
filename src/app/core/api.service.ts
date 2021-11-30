@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 
 export class ApiService {
 	private options = {headers: new HttpHeaders().set('Content-Type', 'application/json')};
-	private baseUrl: string = 'http://gust.ercas.ng:8099/api/';
+	private baseUrl: string = 'http://gustapifront.ercas.ng/api/';
 	// private merchantDetails = JSON.parse(window.localStorage.getItem("merchantDetails"));
 	updateBusinessDetailsURL: string;
 	updateBankDetailsURL: string;
@@ -22,7 +22,7 @@ export class ApiService {
 	
 	// registration call request: signup for new merchants
 	signup(signupPayload: string): Observable<ApiResponse> {
-		return this.http.post<ApiResponse>('http://gust.ercas.ng:8099/api/account/register', signupPayload, this.options);
+		return this.http.post<ApiResponse>('http://gustapifront.ercas.ng/api/account/register', signupPayload, this.options);
 	}
 
 	// call request to login user
@@ -39,7 +39,7 @@ export class ApiService {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			})
 		};
-		return this.http.post('http://gust.ercas.ng:8099/token', params, httpOptions).pipe(map(
+		return this.http.post('http://gustapifront.ercas.ng/token', params, httpOptions).pipe(map(
 			(res: any) => {
 				return res;
 				// console.log(res);
@@ -62,7 +62,7 @@ export class ApiService {
 				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
 			})
 		};
-		return this.http.post('http://gust.ercas.ng:8099/api/Info/All', merchantDetailsPayload, httpOptions).pipe(map(
+		return this.http.post('http://gustapifront.ercas.ng/api/Info/All', merchantDetailsPayload, httpOptions).pipe(map(
 			(res: any) => {
 				console.log(res);
 				return res;
@@ -79,7 +79,7 @@ export class ApiService {
 				'Authorization': 'Bearer ' + localStorage.getItem("accessToken")
 			})
 		};
-		return this.http.post('http://gust.ercas.ng:8099/api/Update/PD', personalDetailsPayload, httpOptions).pipe(map(
+		return this.http.post('http://gustapifront.ercas.ng/api/Update/PD', personalDetailsPayload, httpOptions).pipe(map(
 			(res: any) => {
 				res = {
                     message: "Updated successfully",
@@ -92,7 +92,7 @@ export class ApiService {
 	}
 
 	updateBusinessDetails(businessDetailsPayload: string): Observable<ApiResponse> {
-		this.updateBusinessDetailsURL = "http://gust.ercas.ng:8099/api/Update/BNR";
+		this.updateBusinessDetailsURL = "http://gustapifront.ercas.ng/api/Update/BNR";
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ export class ApiService {
 
 	updateBankDetails(bankDetailsPayload: string): Observable<ApiResponse> {
 		// const merchantDetails = JSON.parse(window.localStorage.getItem("merchantDetails"));
-		this.updateBankDetailsURL = "http://gust.ercas.ng:8099/api/Update/ACI";
+		this.updateBankDetailsURL = "http://gustapifront.ercas.ng/api/Update/ACI";
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
@@ -134,7 +134,7 @@ export class ApiService {
 
 	updateWebhookDetails(webhookDetailsPayload: string): Observable<ApiResponse> {
 		const merchantDetails = JSON.parse(window.localStorage.getItem("merchantDetails"));
-		this.updateWebhookDetailsURL = "http://gust.ercas.ng:8099/api/Update/Webhook";
+		this.updateWebhookDetailsURL = "http://gustapifront.ercas.ng/api/Update/Webhook";
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
